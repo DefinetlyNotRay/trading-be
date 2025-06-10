@@ -4,8 +4,14 @@ import cors from "cors";
 import fetchPrice from "./fetchPrice.js";
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(
+	cors({
+		origin: "*",
+		methods: ["GET", "POST", "OPTIONS"],
+		allowedHeaders: ["Content-Type"],
+	})
+);
+app.use(express.json({ type: "*/*" }));
 
 const configPath = "./config.json";
 const orderLogPath = "./orders.json";
