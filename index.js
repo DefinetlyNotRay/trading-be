@@ -4,13 +4,8 @@ import cors from "cors";
 import fetchPrice from "./fetchPrice.js";
 
 const app = express();
-app.use(
-	cors({
-		origin: "*",
-		methods: ["GET", "POST", "OPTIONS"],
-		allowedHeaders: ["Content-Type"],
-	})
-);
+app.use(cors()); // Ini cukup untuk kebanyakan kasus
+
 app.use(express.json({ type: "*/*" }));
 
 const configPath = "./config.json";
